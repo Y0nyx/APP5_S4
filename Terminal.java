@@ -11,13 +11,14 @@ public class Terminal {
 
 // Constantes et attributs
 private List<String> terminaux = new ArrayList<String>();
+private ULType type;
+public char chaine;
 
 
 /** Un ou deux constructeurs (ou plus, si vous voulez)
   *   pour l'initalisation d'attributs 
  */	
   public Terminal( ) {   // arguments possibles
-     //
   }
 
   public void setTerminaux(String termeTerminal) {
@@ -35,4 +36,8 @@ private List<String> terminaux = new ArrayList<String>();
   public String toString(){
     return terminaux.toString();
   }
+
+  public ULType getType() { return type;}
+
+  public void setType(ULType type) {this.type = type;}
 }

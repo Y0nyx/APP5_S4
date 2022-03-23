@@ -7,23 +7,43 @@
 public class DescenteRecursive {
 
   // Attributs
-
+  private Terminal[] terminals;
 /** Constructeur de DescenteRecursive :
       - recoit en argument le nom du fichier contenant l'expression a analyser
       - pour l'initalisation d'attribut(s)
  */
 public DescenteRecursive(String in) {
-    //
+
 }
 
 
 /** AnalSynt() effectue l'analyse syntaxique et construit l'AST.
  *    Elle retourne une reference sur la racine de l'AST construit
  */
-//public ElemAST AnalSynt( ) {
-   //
-//}
+public ElemAST AnalSynt( ) {
+  Terminal UL = terminals[0];
+  ElemAST temp = E(UL);
+  return temp;
+}
 
+public ElemAST E(Terminal UL){
+  ElemAST n1, n2;
+  n1 = T(UL);
+
+}
+
+public ElemAST T(Terminal UL){
+  if(UL.getType() == ULType.operande) {
+    ElemAST NewLeaf = new FeuilleAST(UL);
+    return NewLeaf;
+  }
+  else
+  {
+    //lancer erreur
+    ElemAST NewLeafErreur = new FeuilleAST(UL);
+    return NewLeafErreur;
+  }
+}
 
 // Methode pour chaque symbole non-terminal de la grammaire retenue
 // ... 
@@ -53,10 +73,10 @@ public void ErreurSynt(String s)
     }
     DescenteRecursive dr = new DescenteRecursive(args[0]);
     try {
-      //ElemAST RacineAST = dr.AnalSynt();
-      //toWriteLect += "Lecture de l'AST trouve : " + RacineAST.LectAST() + "\n";
+      ElemAST RacineAST = dr.AnalSynt();
+      toWriteLect += "Lecture de l'AST trouve : " + RacineAST.LectAST() + "\n";
       System.out.println(toWriteLect);
-      //toWriteEval += "Evaluation de l'AST trouve : " + RacineAST.EvalAST() + "\n";
+      toWriteEval += "Evaluation de l'AST trouve : " + RacineAST.EvalAST() + "\n";
       System.out.println(toWriteEval);
       Writer w = new Writer(args[1],toWriteLect+toWriteEval); // Ecriture de toWrite 
                                                               // dans fichier args[1]

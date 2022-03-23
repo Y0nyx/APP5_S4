@@ -30,6 +30,7 @@ public class AnalLex {
             temp3 = new char[temp2.length];
           }
           else{
+            temp3[i] = temp2[i];
             ErreurLex(String.copyValueOf(temp3));
           }
           break;
@@ -71,7 +72,7 @@ public class AnalLex {
 /** ErreurLex() envoie un message d'erreur lexicale
  */ 
   public void ErreurLex(String s) {	
-     //
+     System.out.println("FUCK YOU CHARLES" + s);
   }
 
   
