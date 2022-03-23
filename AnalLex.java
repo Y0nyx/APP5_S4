@@ -50,9 +50,23 @@ private char[] ListeCaractere;
             state = EtatLexical.B;
             IndiceLecture++;
           } else if (ListeCaractere[IndiceLecture] == '+') {
-            Temp.add(ListeCaractere[IndiceLecture]);
-            terminal.chaine = Temp.toString().replaceAll("[,\\s\\[\\]]", "");
+            terminal.chaine = String.valueOf(ListeCaractere[IndiceLecture]);
             terminal.type = ULType.ADDITION;
+            IndiceLecture++;
+            return terminal;
+          } else if (ListeCaractere[IndiceLecture] == '-') {
+            terminal.chaine = String.valueOf(ListeCaractere[IndiceLecture]);
+            terminal.type = ULType.SOUSTRACTION;
+            IndiceLecture++;
+            return terminal;
+          } else if (ListeCaractere[IndiceLecture] == '/') {
+            terminal.chaine = String.valueOf(ListeCaractere[IndiceLecture]);
+            terminal.type = ULType.DIVISION;
+            IndiceLecture++;
+            return terminal;
+          } else if (ListeCaractere[IndiceLecture] == '*') {
+            terminal.chaine = String.valueOf(ListeCaractere[IndiceLecture]);
+            terminal.type = ULType.MULTIPLICATION;
             IndiceLecture++;
             return terminal;
           } else {
