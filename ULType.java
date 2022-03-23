@@ -1,4 +1,8 @@
 public enum ULType {
-    operande,
-    operateur
+    ADDITION,
+    MULTIPLICATION,
+    DIVISION,
+    SOUSTRACTION,
+    ID,
+    NOMBRE
 }

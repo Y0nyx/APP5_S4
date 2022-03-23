@@ -19,12 +19,7 @@ public class FeuilleAST extends ElemAST {
   /** Evaluation de feuille d'AST
    */
   public int EvalAST( ) {
-      if(terminal.chaine != '1' || terminal.chaine != '0') {
-          ErreurFeuille(terminal.chaine);
-          return -1;
-      }
-      else
-        return Character.getNumericValue(terminal.chaine);
+        return 0;
   }
 
 

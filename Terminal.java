@@ -10,34 +10,17 @@ public class Terminal {
 
 
 // Constantes et attributs
-private List<String> terminaux = new ArrayList<String>();
-private ULType type;
-public char chaine;
+public ULType type;
+public String chaine;
 
 
 /** Un ou deux constructeurs (ou plus, si vous voulez)
   *   pour l'initalisation d'attributs 
  */	
-  public Terminal( ) {   // arguments possibles
+  public Terminal() { }
+
+  public Terminal(String c, ULType type){
+    this.chaine = c;
+    this.type = type;
   }
-
-  public void setTerminaux(String termeTerminal) {
-    this.terminaux.add(termeTerminal);
-  }
-
-  public List<String> getTerminaux() {
-    return terminaux;
-  }
-
-  public String getTerminaux(int i) {
-    return terminaux.get(i);
-  }
-
-  public String toString(){
-    return terminaux.toString();
-  }
-
-  public ULType getType() { return type;}
-
-  public void setType(ULType type) {this.type = type;}
 }

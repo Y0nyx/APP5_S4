@@ -21,26 +21,25 @@ public class NoeudAST extends ElemAST {
   /** Evaluation de noeud d'AST
    */
   public int EvalAST( ) {
-    switch(operateur.chaine){
-        case '+':
+    switch(operateur.type){
+        case ADDITION:
         {
             return LeftLeaf.EvalAST()+RightLeaf.EvalAST();
         }
-        case '*':
+        case MULTIPLICATION:
         {
             return LeftLeaf.EvalAST()*RightLeaf.EvalAST();
         }
-        case '-':
+        case SOUSTRACTION:
         {
             return LeftLeaf.EvalAST()-RightLeaf.EvalAST();
         }
-        case '/':
+        case DIVISION:
         {
             return LeftLeaf.EvalAST()/RightLeaf.EvalAST();
         }
         default:
         {
-            ErreurNoeud(operateur.chaine);
             return 0;
         }
     }

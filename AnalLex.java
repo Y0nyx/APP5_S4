@@ -2,53 +2,22 @@
 
 /** @author Ahmed Khoumsi */
 
+import java.util.ArrayList;
+
 /** Cette classe effectue l'analyse lexicale
  */
 public class AnalLex {
 
 // Attributs
-//  ...
+private int IndiceLecture;
+private char[] ListeCaractere;
 
 	
 /** Constructeur pour l'initialisation d'attribut(s)
  */
   public AnalLex(String s) {  // arguments possibles
-    Terminal temp = new Terminal();
-    char[] temp2 = s.toCharArray();
-    char[] temp3 = new char[temp2.length];
-    EtatLexical state = EtatLexical.A;
-    for(int i = 0; i < temp2.length; i++){
-      switch (state){
-        case A :
-          if(temp2[i] == '1' || temp2[i] == '0'){
-            temp3[i] = temp2[i];
-            state = EtatLexical.B;
-          }
-          else if(temp2[i] == '+'){
-            temp3[i] = temp2[i];
-            temp.setTerminaux(String.copyValueOf(temp3));
-            temp3 = new char[temp2.length];
-          }
-          else{
-            temp3[i] = temp2[i];
-            ErreurLex(String.copyValueOf(temp3));
-          }
-          break;
-        case B :
-          if(temp2[i] == '1' || temp2[i] == '0'){
-            temp3[i] = temp2[i];
-            state = EtatLexical.B;
-          }
-          else{
-            i--;
-            temp.setTerminaux(String.copyValueOf(temp3));
-            state = EtatLexical.A;
-            temp3 = new char[temp2.length];
-          }
-          break;
-      }
-        System.out.println(temp.toString());
-    }
+    ListeCaractere = s.toCharArray();
+    IndiceLecture = 0;
   }
 
 
@@ -57,16 +26,58 @@ public class AnalLex {
       true s'il reste encore au moins un terminal qui n'a pas ete retourne 
  */
   public boolean resteTerminal( ) {
-    return true;
+    if(IndiceLecture < ListeCaractere.length)
+      return true;
+    else
+      return false;
   }
   
   
 /** prochainTerminal() retourne le prochain terminal
       Cette methode est une implementation d'un AEF
  */  
-  //public Terminal prochainTerminal( ) {
-     //
- // }
+  public Terminal prochainTerminal( ) {
+    ArrayList<Character> Temp = new ArrayList<Character>();
+    Terminal terminal = new Terminal();
+    EtatLexical state = EtatLexical.A;
+    while(resteTerminal()) {
+      switch (state) {
+        case A:
+          if (ListeCaractere[IndiceLecture] == '1' ||
+                  ListeCaractere[IndiceLecture] == '0') {
+            Temp.add(ListeCaractere[IndiceLecture]);
+            terminal.type = ULType.NOMBRE;
+            state = EtatLexical.B;
+            IndiceLecture++;
+          } else if (ListeCaractere[IndiceLecture] == '+') {
+            Temp.add(ListeCaractere[IndiceLecture]);
+            terminal.chaine = Temp.toString().replaceAll("[,\\s\\[\\]]", "");
+            terminal.type = ULType.ADDITION;
+            IndiceLecture++;
+            return terminal;
+          } else {
+            Temp.add(ListeCaractere[IndiceLecture]);
+            ErreurLex(Temp.toString());
+            return terminal;
+          }
+          break;
+        case B:
+          if (ListeCaractere[IndiceLecture] == '1' ||
+                  ListeCaractere[IndiceLecture] == '0') {
+            Temp.add(ListeCaractere[IndiceLecture]);
+            state = EtatLexical.B;
+              IndiceLecture++;
+          } else {
+            terminal.chaine = Temp.toString().replaceAll("[,\\s\\[\\]]", "");
+            state = EtatLexical.A;
+            return terminal;
+          }
+      }
+    }
+    terminal.chaine = Temp.toString().replaceAll("[,\\s\\[\\]]", "");
+    state = EtatLexical.A;
+    return terminal;
+  }
 
  
 /** ErreurLex() envoie un message d'erreur lexicale
@@ -90,10 +101,10 @@ public class AnalLex {
 
     // Execution de l'analyseur lexical
     Terminal t = null;
-    //while(lexical.resteTerminal()){
-      //t = lexical.prochainTerminal();
-      //toWrite += t.chaine + "\n" ;  // toWrite contient le resultat
-    //}				   //    d'analyse lexicale
+    while(lexical.resteTerminal()){
+      t = lexical.prochainTerminal();
+      toWrite += t.chaine + "\n" ;  // toWrite contient le resultat
+    }				   //    d'analyse lexicale
     System.out.println(toWrite); 	// Ecriture de toWrite sur la console
     Writer w = new Writer(args[1],toWrite); // Ecriture de toWrite dans fichier args[1]
     System.out.println("Fin d'analyse lexicale");

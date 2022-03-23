@@ -29,11 +29,11 @@ public ElemAST AnalSynt( ) {
 public ElemAST E(Terminal UL){
   ElemAST n1, n2;
   n1 = T(UL);
-
+  return n1;
 }
 
 public ElemAST T(Terminal UL){
-  if(UL.getType() == ULType.operande) {
+  if(UL.type == ULType.NOMBRE) {
     ElemAST NewLeaf = new FeuilleAST(UL);
     return NewLeaf;
   }
