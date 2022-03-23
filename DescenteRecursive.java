@@ -1,4 +1,4 @@
-package app;6
+
 
 /** @author Ahmed Khoumsi */
 
@@ -20,9 +20,9 @@ public DescenteRecursive(String in) {
 /** AnalSynt() effectue l'analyse syntaxique et construit l'AST.
  *    Elle retourne une reference sur la racine de l'AST construit
  */
-public ElemAST AnalSynt( ) {
+//public ElemAST AnalSynt( ) {
    //
-}
+//}
 
 
 // Methode pour chaque symbole non-terminal de la grammaire retenue
@@ -53,10 +53,10 @@ public void ErreurSynt(String s)
     }
     DescenteRecursive dr = new DescenteRecursive(args[0]);
     try {
-      ElemAST RacineAST = dr.AnalSynt();
-      toWriteLect += "Lecture de l'AST trouve : " + RacineAST.LectAST() + "\n";
+      //ElemAST RacineAST = dr.AnalSynt();
+      //toWriteLect += "Lecture de l'AST trouve : " + RacineAST.LectAST() + "\n";
       System.out.println(toWriteLect);
-      toWriteEval += "Evaluation de l'AST trouve : " + RacineAST.EvalAST() + "\n";
+      //toWriteEval += "Evaluation de l'AST trouve : " + RacineAST.EvalAST() + "\n";
       System.out.println(toWriteEval);
       Writer w = new Writer(args[1],toWriteLect+toWriteEval); // Ecriture de toWrite 
                                                               // dans fichier args[1]

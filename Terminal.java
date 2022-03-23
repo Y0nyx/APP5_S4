@@ -1,4 +1,5 @@
-package app6;
+import java.util.ArrayList;
+import java.util.List;
 
 /** @author Ahmed Khoumsi */
 
@@ -9,7 +10,7 @@ public class Terminal {
 
 
 // Constantes et attributs
-//  ....
+private List<String> terminaux = new ArrayList<String>();
 
 
 /** Un ou deux constructeurs (ou plus, si vous voulez)
@@ -19,4 +20,19 @@ public class Terminal {
      //
   }
 
+  public void setTerminaux(String termeTerminal) {
+    this.terminaux.add(termeTerminal);
+  }
+
+  public List<String> getTerminaux() {
+    return terminaux;
+  }
+
+  public String getTerminaux(int i) {
+    return terminaux.get(i);
+  }
+
+  public String toString(){
+    return terminaux.toString();
+  }
 }
