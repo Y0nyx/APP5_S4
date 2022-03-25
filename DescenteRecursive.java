@@ -45,12 +45,6 @@ public ElemAST T(Terminal UL){
   }
 }
 
-// Methode pour chaque symbole non-terminal de la grammaire retenue
-// ... 
-// ...
-
-
-
 /** ErreurSynt() envoie un message d'erreur syntaxique
  */
 public void ErreurSynt(String s)

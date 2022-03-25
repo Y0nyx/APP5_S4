@@ -26,10 +26,7 @@ private char[] ListeCaractere;
       true s'il reste encore au moins un terminal qui n'a pas ete retourne 
  */
   public boolean resteTerminal( ) {
-    if(IndiceLecture < ListeCaractere.length)
-      return true;
-    else
-      return false;
+      return IndiceLecture < ListeCaractere.length;
   }
   
   
@@ -80,7 +77,7 @@ private char[] ListeCaractere;
                   ListeCaractere[IndiceLecture] == '0') {
             Temp.add(ListeCaractere[IndiceLecture]);
             state = EtatLexical.B;
-              IndiceLecture++;
+            IndiceLecture++;
           } else {
             terminal.chaine = Temp.toString().replaceAll("[,\\s\\[\\]]", "");
             state = EtatLexical.A;
