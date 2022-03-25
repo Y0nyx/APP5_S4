@@ -1,4 +1,5 @@
-package app6;
+import java.util.ArrayList;
+import java.util.List;
 
 /** @author Ahmed Khoumsi */
 
@@ -9,14 +10,17 @@ public class Terminal {
 
 
 // Constantes et attributs
-//  ....
+public ULType type;
+public String chaine;
 
 
 /** Un ou deux constructeurs (ou plus, si vous voulez)
   *   pour l'initalisation d'attributs 
  */	
-  public Terminal( ) {   // arguments possibles
-     //
-  }
+  public Terminal() { }
 
+  public Terminal(String c, ULType type){
+    this.chaine = c;
+    this.type = type;
+  }
 }

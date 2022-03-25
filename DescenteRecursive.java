@@ -1,4 +1,4 @@
-package app;6
+
 
 /** @author Ahmed Khoumsi */
 
@@ -7,13 +7,13 @@ package app;6
 public class DescenteRecursive {
 
   // Attributs
-
+  private Terminal[] terminals;
 /** Constructeur de DescenteRecursive :
       - recoit en argument le nom du fichier contenant l'expression a analyser
       - pour l'initalisation d'attribut(s)
  */
 public DescenteRecursive(String in) {
-    //
+
 }
 
 
@@ -21,15 +21,29 @@ public DescenteRecursive(String in) {
  *    Elle retourne une reference sur la racine de l'AST construit
  */
 public ElemAST AnalSynt( ) {
-   //
+  Terminal UL = terminals[0];
+  ElemAST temp = E(UL);
+  return temp;
 }
 
+public ElemAST E(Terminal UL){
+  ElemAST n1, n2;
+  n1 = T(UL);
+  return n1;
+}
 
-// Methode pour chaque symbole non-terminal de la grammaire retenue
-// ... 
-// ...
-
-
+public ElemAST T(Terminal UL){
+  if(UL.type == ULType.NOMBRE) {
+    ElemAST NewLeaf = new FeuilleAST(UL);
+    return NewLeaf;
+  }
+  else
+  {
+    //lancer erreur
+    ElemAST NewLeafErreur = new FeuilleAST(UL);
+    return NewLeafErreur;
+  }
+}
 
 /** ErreurSynt() envoie un message d'erreur syntaxique
  */
