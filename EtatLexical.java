@@ -1,4 +1,6 @@
 public enum EtatLexical {
     A,
-    B
+    B,
+    C,
+    D
 }

@@ -4,5 +4,8 @@ public enum ULType {
     DIVISION,
     SOUSTRACTION,
     ID,
-    NOMBRE
+    NOMBRE,
+    LEFTPARENTHESIS,
+    RIGHTPARENTHESIS,
+    NOTSUPPORTED
 }
