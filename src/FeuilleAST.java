@@ -19,17 +19,20 @@ public class FeuilleAST extends ElemAST {
   /** Evaluation de feuille d'AST
    */
   public int EvalAST( ) {
-        return 0;
+        if(this.terminal.type == ULType.NOMBRE)
+            return Integer.parseInt(this.terminal.chaine);
+        else
+            return -1;
   }
 
 
  /** Lecture de chaine de caracteres correspondant a la feuille d'AST
   */
   public String LectAST( ) {
-    return this.terminal.toString();
+    return this.terminal.LectTerminal();
   }
 
-    private void ErreurFeuille(char op){
+  public void ErreurEvalAST(char op){
         System.out.println("YOU BITCH FEUILLE" + op);
     }
 
