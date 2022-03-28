@@ -1,3 +1,10 @@
-12345                         NOMBRE
+(                             LEFTPARENTHESIS
+U_x                           ID
+-                             SOUSTRACTION
+-                             SOUSTRACTION
+V_y                           ID
+)                             RIGHTPARENTHESIS
 *                             MULTIPLICATION
-123                           NOMBRE
+W_z                           ID
+/                             DIVISION
+35                            NOMBRE
