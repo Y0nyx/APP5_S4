@@ -48,11 +48,11 @@ public class NoeudAST extends ElemAST {
   /** Lecture de noeud d'AST
    */
   public String LectAST( ) {
-    return ("("+ LeftLeaf.LectAST()+operator.toString()+RightLeaf.LectAST()+")");
+    return ("("+ LeftLeaf.LectAST()+operator.LectTerminal()+RightLeaf.LectAST()+")");
   }
 
-  private void ErreurNoeud(char op){
-      System.out.println("YOU BITCH" + op);
+  public void ErreurEvalAST(String s) {
+      System.out.println("YOU BITCH" + s);
   }
 }
 

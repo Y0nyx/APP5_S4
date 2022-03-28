@@ -23,4 +23,6 @@ public String chaine;
     this.chaine = c;
     this.type = type;
   }
+
+  public String LectTerminal() { return this.chaine; }
 }
