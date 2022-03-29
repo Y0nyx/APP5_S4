@@ -1,8 +1,6 @@
 (                             LEFTPARENTHESIS
 U_x                           ID
 -                             SOUSTRACTION
--                             SOUSTRACTION
-V_y                           ID
 )                             RIGHTPARENTHESIS
 *                             MULTIPLICATION
 W_z                           ID

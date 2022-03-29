@@ -137,7 +137,6 @@ private char UnderScore = '_';
         return terminal;
       }
     } else terminal.chaine = Temp.toString().replaceAll("[,\\s\\[\\]]", "");
-    state = EtatLexical.A;
     return terminal;
   }
 

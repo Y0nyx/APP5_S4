@@ -12,8 +12,8 @@ public class NoeudAST extends ElemAST {
     /** Constructeur pour l'initialisation d'attributs
      */
     public NoeudAST(ElemAST RightLeafL,ElemAST LeftLeaf,Terminal operator) { // avec arguments
-        this.RightLeaf = RightLeafL;
-        this.LeftLeaf = LeftLeaf;
+        this.RightLeaf = LeftLeaf;
+        this.LeftLeaf = RightLeafL;
         this.operator = operator;
     }
 
@@ -24,19 +24,19 @@ public class NoeudAST extends ElemAST {
         switch(operator.type){
             case ADDITION:
             {
-                return RightLeaf.EvalAST()+LeftLeaf.EvalAST();
+                return LeftLeaf.EvalAST()+RightLeaf.EvalAST();
             }
             case MULTIPLICATION:
             {
-                return RightLeaf.EvalAST()*LeftLeaf.EvalAST();
+                return LeftLeaf.EvalAST()*RightLeaf.EvalAST();
             }
             case SOUSTRACTION:
             {
-                return RightLeaf.EvalAST()-LeftLeaf.EvalAST();
+                return LeftLeaf.EvalAST()-RightLeaf.EvalAST();
             }
             case DIVISION:
             {
-                return RightLeaf.EvalAST()/LeftLeaf.EvalAST();
+                return LeftLeaf.EvalAST()/RightLeaf.EvalAST();
             }
             default:
             {
@@ -51,5 +51,5 @@ public class NoeudAST extends ElemAST {
         return ("("+ LeftLeaf.LectAST()+" "+operator.LectTerminal()+" "+RightLeaf.LectAST()+")");
     }
 
-    public String LectASTPostFix () { return ("("+ LeftLeaf.LectASTPostFix()+" "+RightLeaf.LectASTPostFix()+" "+operator.LectTerminal()+")");}
+    public String LectASTPostFix () { return ( LeftLeaf.LectASTPostFix()+" "+RightLeaf.LectASTPostFix()+" "+operator.LectTerminal());}
 }

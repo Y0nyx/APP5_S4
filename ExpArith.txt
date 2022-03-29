@@ -1,10 +1,6 @@
-1234567890 * Test
-((Test) / 1242352)
 12 - 12 + 12 * 12 / 12
 Vitesse_01+100101
 01ViTeSsE
 Vitesse__01
-Vasdasd_
 >Test
-(55 - 47 ) * 14 / 2
-( U_x - V_y ) * W_z / 35
+( U_x - ) * W_z / 35

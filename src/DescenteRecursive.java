@@ -82,8 +82,8 @@ public class DescenteRecursive {
       IndiceLecture++;
       elemAST = X();
       if(terminals[IndiceLecture-1].type == ULType.RIGHTPARENTHESIS){
-      } else { ErreurSynt(terminals[IndiceLecture].chaine); }
-    }else{ ErreurSynt(terminals[IndiceLecture].chaine); }
+      } else { ErreurSynt(terminals[IndiceLecture].chaine, ULType.RIGHTPARENTHESIS); }
+    }else{ ErreurSynt(terminals[IndiceLecture-1].chaine, ULType.ID); }
     if(IndiceLecture < AttributLenght-1 )
       IndiceLecture++;
     return elemAST;
@@ -93,10 +93,15 @@ public class DescenteRecursive {
 
   /** ErreurSynt() envoie un message d'erreur syntaxique
    */
-  public void ErreurSynt(String s)
+  public void ErreurSynt(String s, ULType type)
   {
-  System.out.println("////// ERREUR //////" );
-  System.out.println("Ce caractère ne respecte pas la grammaire : " + s);
+    if(IndiceLecture < AttributLenght-1)
+    {
+      System.out.println("////// ERREUR //////" );
+      System.out.println("Après : "+s);
+      if(type == ULType.ID ) { System.out.println("Il manque un NOMBRE ou un ID à l'indice de lecture "+IndiceLecture+" pour pouvoir respester la grammaire.");
+      } else if(type == ULType.RIGHTPARENTHESIS ) { System.out.println("Il manque une parenthèse à droite à l'indice de lecture "+IndiceLecture+" pour pouvoir respester la grammaire."); }
+    }
   }
 
 
